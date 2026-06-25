@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-zinc-50 text-zinc-900;
+    margin: 0;
+  }
+
+  /* Leaflet map fix inside React */
+  .leaflet-container {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white border border-zinc-200 rounded-lg p-5;
+  }
+
+  .badge-high {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700;
+  }
+
+  .badge-medium {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-700;
+  }
+
+  .badge-low {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-zinc-100 text-zinc-600;
+  }
+
+  .table-row-divider {
+    @apply border-b border-[rgba(59,130,246,0.08)] last:border-0;
+  }
+
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Global sleek button bounding boxes and animations */
+@layer base {
+  button:not(.react-flow__controls-button) {
+    @apply border border-zinc-300/80 shadow-sm hover:shadow hover:border-zinc-400/90 active:scale-[0.98] transition-all duration-150;
+  }
+
+  button.bg-zinc-900 {
+    @apply border border-zinc-950 hover:border-zinc-800;
+  }
+
+  button.bg-blue-600 {
+    @apply border border-blue-700 hover:border-blue-800;
+  }
+
+  button.bg-red-600 {
+    @apply border border-red-700 hover:border-red-800;
+  }
+
+  button.bg-green-600 {
+    @apply border border-green-700 hover:border-green-800;
+  }
+
+  button.bg-green-50, button.bg-blue-50, button.bg-slate-50, button.bg-white {
+    @apply border border-zinc-200 hover:border-zinc-300;
+  }
+
+  button[class*="border-transparent"] {
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+  button[class*="border-transparent"]:hover {
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+  button[class*="border-transparent"]:active {
+    transform: none !important;
+  }
+}
+
+
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+

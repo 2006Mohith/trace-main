@@ -1,0 +1,53 @@
+# Root .gitignore for TRACE platform repository
+
+# System & OS Files
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+.tempmediaStorage/
+
+# Virtual Environments & Python cache
+venv/
+.venv/
+env/
+.env
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+
+# Frontend dependencies and builds
+trace-frontend/node_modules/
+trace-frontend/dist/
+trace-frontend/dist-ssr/
+trace-frontend/*.local
+trace-frontend/.eslintcache
+
+# SQLite Databases & Local Storage
+trace-backend/*.db
+trace-backend/*.db-journal
+trace-backend/*.db-shm
+trace-backend/*.db-wal
+*.db
+
+# Logs
+*.log
+logs/
+trace-frontend/logs/
+trace-backend/logs/
+
+# Editor / IDE settings
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Firebase CLI cache
+.firebase/
+

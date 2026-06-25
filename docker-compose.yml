@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: trace_user
+      POSTGRES_PASSWORD: trace_pass
+      POSTGRES_DB: trace_db
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U trace_user -d trace_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./trace-backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://trace_user:trace_pass@db:5432/trace_db
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+
+  frontend:
+    build: ./trace-frontend
+    ports:
+      - "5173:4173"
+    depends_on:
+      - backend
+
+volumes:
+  pg_data:
